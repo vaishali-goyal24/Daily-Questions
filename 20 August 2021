@@ -17,8 +17,27 @@ public:
     }
 };
 
-Time Complexity:
-Space Complexity:
+Time Complexity: O(n)think in the terms of number of nodes visited. 
+Space Complexity: O(depth of recursion tree)=O(n)(in worst case that is skewed tree)
 
 
+(2) Same Tree
 
+class Solution {
+public:
+    bool isSameTree(TreeNode* p, TreeNode* q) 
+    {
+       if(!p && !q)
+           return true;
+        if(!p && q)
+            return false;
+        if(p && !q)
+            return false;
+        if(p->val!=q->val)
+            return false;
+        return (isSameTree(p->left,q->left) && isSameTree(p->right,q->right));
+    }
+};
+
+Time Complexity: O(n+n)think in the terms of number of nodes visited. 
+Space Complexity: O(depth of recursion tree)=O(n+n)(in worst case that is skewed tree)
